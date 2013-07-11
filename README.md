@@ -11,10 +11,6 @@ git-study
 ## How?
 基本的に[Pro Git](https://github.com/hotchemi/git-study/raw/master/doc/progit.ja_20130506.pdf) を読み進めていく読書会の様なものを想定していますが､つまらないようであれば変えます｡
 
-## Member
-- 宇賀神
-- 片渕
-- 和田
-
 ## Schedule
-- とりあえず7/12の第一回を和田さんが資料作ってくれるって言ってました｡
+- 2013/07/12 第1回
+- 2013 07/19 第2回
