@@ -59,12 +59,26 @@ Git Study 03 3.4～3.7
 
 ![5](./img/5.png)
 
-ローカルのmasterブランチで作業中に、git.ourcompany.comに誰かが更新をかけた場合  
+### ローカルのmasterブランチで作業中に、git.ourcompany.comに誰かが更新をかけた場合  
+
 手元での作業を同期させるには以下のコマンドを実行  
 ```sh
 $git fetch origin
 ```
 
-![6](./img/6.png)
+![7](./img/7.png)
 
-手元にないデータをすべて取得し、origin/masterが指す先を最新の位置に変更する。
+手元にないデータをすべて取得し、origin/masterが指す先を最新の位置に変更する。  
+
+### 複数のリモートサーバーがある場合
+
+例えば、
+-  ネットワーク上にgit.ourcompany.comとは別のgit.team1.ourcompany.comがあるとする
+- git remote addで追加、teamoneと命名し参照できるようにする
+- git fetch teamoneを実行する
+- 手元にないデータをリモートのteamoneサーバーから取得できるようになる
+
+![8](./img/8.png)   
+
+
+
