@@ -97,18 +97,15 @@ $git push (remote) (branch)
 
 必要に応じてそれ以外の追跡ブランチを作成することが可能  
 ```sh
-$git checkout --trace [remotename]/[branch]
+$git checkout --track [remotename]/[branch]
 ``` 
 
 ### リモートブランチの削除
 
 作業終了したった、リモートブランチを削除したい！
 ```sh
-$git push origin [remotename] :[branch]
+$git push [remotename] :[branch]
 ```
-  
-  
-  
   
 
 終わり
