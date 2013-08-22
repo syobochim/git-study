@@ -105,4 +105,6 @@ $git checkout --trace [remotename]/[branch]
 作業終了したった、リモートブランチを削除したい！
 ```sh
 $git push origin [remotename] :[branch]
-``` 
+```
+
+![9](./img/9.png)  
