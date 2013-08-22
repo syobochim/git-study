@@ -1,4 +1,4 @@
-Git Study 03 3.4～3.7
+Git Study 05 3.4～3.5
 =========
 
 ## 3.4 ブランチでの作業の流れ
@@ -80,5 +80,29 @@ $git fetch origin
 
 ![8](./img/8.png)   
 
+### プッシュ
 
+ブランチの内容をみんなと共有したくなった！
+```sh
+$git push (remote) (branch)
+``` 
 
+### 追跡ブランチ
+
+追跡ブランチとは、リモートブランチと直接のつながりを持つローカルブランチのこと。  
+追跡ブランチ上で、git push や git pull を実行すると、リモート参照先に対して自動的に処理を行う  
+
+※あるリポジトリをcloneしたら、自動的にmasterブランチを作成し、origin/masterを追跡する。  
+これが、git push や git pull が引数なしでもうまく動作する理由。
+
+必要に応じてそれ以外の追跡ブランチを作成することが可能  
+```sh
+$git checkout --trace [remotename]/[branch]
+``` 
+
+### リモートブランチの削除
+
+作業終了したった、リモートブランチを削除したい！
+```sh
+$git push origin [remotename] :[branch]
+``` 
