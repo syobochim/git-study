@@ -106,5 +106,11 @@ $git checkout --trace [remotename]/[branch]
 ```sh
 $git push origin [remotename] :[branch]
 ```
+  
+  
+  
+  
 
+終わり
+  
 ![9](./img/9.png)  
