@@ -68,7 +68,65 @@ Your public key has been saved in /Users/schacon/.ssh/id_rsa.pub.
 The key fingerprint is:
 43:c5:5b:5f:b1:f1:50:43:ad:20:a6:92:6a:1f:9a:3a schacon@agadorlaptop.local
 ```
+
 鍵の保存先を指定するよう求められたら => .ssh/id_da  
 パスワードを入力するよう求められたら => ２回入力（入力したくない場合は空を指定）
 
 ## 4.3 サーバーのセットアップ
+
+authorized_keys方式でユーザー認証を行う  
+サーバーにはUbuntuのようなLinuxディストリビューションを動かしていると仮定
+  
+①'git'ユーザーを作成  
+②'git'の.sshディレクトリを作成
+```sh
+$ sudo adduser git
+$ su git
+$ cd
+$ mkdir .ssh
+```
+
+③開発者たちがSSH公開鍵を'git'のauthorized_keysに追加する  
+※開発者たち（John, Josie, Jessica）
+```sh
+$ cat/tmp/id_rsa.john.pub >> ~/.ssh/authorized_keys
+$ cat/tmp/id_rsa.josie.pub >> ~/.ssh/authorized_keys
+$ cat/tmp/id_rsa.jessica.pub >> ~/.ssh/authorized_keys
+```
+
+④John, Josie, Jessicaが使うための空のリポジトリを作成
+```sh
+$ cd /opt/git
+$ mkdir project.git
+$ cd project.git
+$ git --bare init
+```
+
+⑤これでJohn, Josie, Jessicaは'git'ユーザーとしてプロジェクトの最初のバージョンをプッシュできるようなった！  
+'git'ユーザーとリポジトリを作ったサーバーのホスト名をgitserverとして、  
+そのサーバーを指すようにしてDNSを設定しておくと、以下のコマンドが使える。
+```sh
+# Johnのコンピューターで
+$ cd myproject
+$ git init
+$ git add .
+$ git commit -m 'initial commit'
+$ git remote add origin git@gitserver:/opt/git/project.git
+$ git push origin master
+```
+
+⑥万が一に備えて'git'ユーザーができることを制限する  
+```sh
+$ sudo vim/etc/passwe
+```
+一番最後に、このような行があるはず
+```sh
+git:x:1000:1000::/home/git:/bin/sh
+```
+こいつを以下に変更する
+```sh
+git:x:1000:1000::/home/git:/usr/bin/git-shell
+```
+git-shell … Gitに付属しているGitに関する作業しかできない制限付きシェル
+
+## 4.5 一般公開
