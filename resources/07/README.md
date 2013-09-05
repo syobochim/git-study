@@ -30,7 +30,7 @@ $ git clone user@git.example.com:/opt/git/my_preject.git
 ```
 さらに/opt/git/.my_project.gitへの書き込み権限がある人なら、すでにプッシュが可能！
 
-か、書き込み権限がないよー
+か、書き込み権限がないよー  
 ![1](./img/1.png)
 
 そんな場合は
@@ -39,7 +39,7 @@ $ ssh user@git.example.com $ cd /opt/git/my_project.git
 $ git init --bare --shared
 ```
 
-てゆかそもそもSSHアクセスできないよー
+てゆかそもそもSSHアクセスできないよー  
 ![1](./img/1.png)
 
 ## 4.3 SSH公開鍵の作成
