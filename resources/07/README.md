@@ -132,4 +132,46 @@ git-shell … Gitに付属しているGitに関する作業しかできない制
 ## 4.5 一般公開
 
 オープンソースのプロジェクトを扱ったり、自動ビルドやCI用に大領のサーバーが用意されていて入れ替わりが  
-しばしば発生する場合など、匿名アクセスのためだけに、毎回SSH鍵を作成しなければならないのは大変。
+しばしば発生する場合など、匿名アクセスのためだけに、毎回SSH鍵を作成しなければならないのは大変。  
+  
+一番シンプルな方法は、ウェブサーバーを立ち上げてそのドキュメントルートにGitリポジトリを置き、  
+post-update フックを有効にすること。  
+
+例：リポジトリが/opt/git ディレクトリにあり、マシン上でApacheが稼働中であるものとする。  
+
+①フックを有効にする
+```sh
+$ cd project.git
+$ mv hooks/post-update.sample hooks/post-update $ chmod a+x hooks/post-update
+```
+post-update は、いったい何をしているか中身をみると
+```sh
+$ cat .git/hooks/post-update #!/bin/sh
+exec git-update-server-info
+```
+SSH 経由でサーバーへのプッシュが行われると、Git はこのコマンドを実行し、HTTP 経由での取得に必要なファイルを更新する。
+  
+②
+Apache の設定に VirtualHost エントリを追加して Git プロジェクトのディレクトリをドキュメントルートに設定する。
+```sh
+<VirtualHost *:80>
+  ServerName git.gitserver
+  DocumentRoot /opt/git
+  <Directory /opt/git/>
+    Order allow, deny
+    allow from all
+  </Directory>
+</VirtualHost>
+```
+③/
+opt/git ディレクトリの所有グループを www-data にし、ウェブサーバがこのリポジトリにアクセスできるようにする。
+
+```sh
+$ chgrp -R www-data /opt/git
+```
+④pacheを再起動
+プロジェクトの URL を指定してリポジトリのクローンができるようになる。
+
+```sh
+$ git clone http://git.gitserver/project.git
+```
