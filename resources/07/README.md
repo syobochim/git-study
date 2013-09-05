@@ -1,4 +1,4 @@
-Git Study 07回 4.2~4.10
+Git Study 07回 4.2~4.5
 =========
 ## 4.2 サーバー用のGitの取得
 
@@ -85,7 +85,6 @@ $ su git
 $ cd
 $ mkdir .ssh
 ```
-
 ③開発者たちがSSH公開鍵を'git'のauthorized_keysに追加する  
 ※開発者たち（John, Josie, Jessica）
 ```sh
@@ -93,7 +92,6 @@ $ cat/tmp/id_rsa.john.pub >> ~/.ssh/authorized_keys
 $ cat/tmp/id_rsa.josie.pub >> ~/.ssh/authorized_keys
 $ cat/tmp/id_rsa.jessica.pub >> ~/.ssh/authorized_keys
 ```
-
 ④John, Josie, Jessicaが使うための空のリポジトリを作成
 ```sh
 $ cd /opt/git
@@ -101,7 +99,6 @@ $ mkdir project.git
 $ cd project.git
 $ git --bare init
 ```
-
 ⑤これでJohn, Josie, Jessicaは'git'ユーザーとしてプロジェクトの最初のバージョンをプッシュできるようなった！  
 'git'ユーザーとリポジトリを作ったサーバーのホスト名をgitserverとして、  
 そのサーバーを指すようにしてDNSを設定しておくと、以下のコマンドが使える。
@@ -114,7 +111,6 @@ $ git commit -m 'initial commit'
 $ git remote add origin git@gitserver:/opt/git/project.git
 $ git push origin master
 ```
-
 ⑥万が一に備えて'git'ユーザーができることを制限する  
 ```sh
 $ sudo vim/etc/passwe
@@ -131,7 +127,7 @@ git-shell … Gitに付属しているGitに関する作業しかできない制
 
 ## 4.5 一般公開
 
-オープンソースのプロジェクトを扱ったり、自動ビルドやCI用に大領のサーバーが用意されていて入れ替わりが  
+オープンソースのプロジェクトを扱ったり、自動ビルドやCI用に大量のサーバーが用意されていて入れ替わりが  
 しばしば発生する場合など、匿名アクセスのためだけに、毎回SSH鍵を作成しなければならないのは大変。  
   
 一番シンプルな方法は、ウェブサーバーを立ち上げてそのドキュメントルートにGitリポジトリを置き、  
@@ -142,11 +138,14 @@ post-update フックを有効にすること。
 ①フックを有効にする
 ```sh
 $ cd project.git
-$ mv hooks/post-update.sample hooks/post-update $ chmod a+x hooks/post-update
+$ mv hooks/post-update.sample hooks/post-update
+$ chmod a+x hooks/post-update
 ```
 post-update は、いったい何をしているか中身をみると
 ```sh
-$ cat .git/hooks/post-update #!/bin/sh
+$ cat .git/hooks/post-update
+
+#!/bin/sh
 exec git-update-server-info
 ```
 SSH 経由でサーバーへのプッシュが行われると、Git はこのコマンドを実行し、HTTP 経由での取得に必要なファイルを更新する。
