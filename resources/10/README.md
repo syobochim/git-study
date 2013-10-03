@@ -177,6 +177,11 @@ Tortoiseにも[TortoiseGit](https://code.google.com/p/tortoisegit://code.google.
 * hub pull-request
 * hub fork
 
+#### [gist](https://github.com/defunkt/gist)
+* CLI上からgistを操作
+* 追加、更新可能
+* descriptionの追加や、private設定、クリップボードからgist作成など出来る
+
 ### Vim
 #### [vim-fugitive](https://github.com/tpope/vim-fugitive)
 * vim上でGit操作が出来る
