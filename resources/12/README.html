@@ -1,0 +1,392 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body{
+  color:#444;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:12px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 1em;
+  outline: 1300px solid #FAFAFA;
+}
+
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+
+span.backtick {
+  border:1px solid #EAEAEA;
+  border-radius:3px;
+  background:#F8F8F8;
+  padding:0 3px 0 3px;
+}
+
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+
+p{
+margin:1em 0;
+}
+
+img{
+max-width:100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+font-weight:normal;
+color:#111;
+line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; border-bottom:1px solid silver; padding-bottom: 5px; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+
+blockquote{
+color:#666666;
+margin:0;
+padding-left: 3em;
+border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+
+
+pre , code, kbd, samp { 
+  color: #000; 
+  font-family: monospace; 
+  font-size: 0.88em; 
+  border-radius:3px;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC; 
+}
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 5px 12px;}
+pre code { border: 0px !important; padding: 0;}
+code { padding: 0 3px 0 3px; }
+
+b, strong { font-weight: bold; }
+
+dfn { font-style: italic; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+@media only screen and (min-width: 480px) {
+body{font-size:14px;}
+}
+
+@media only screen and (min-width: 768px) {
+body{font-size:16px;}
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+  body{font-size:12pt; max-width:100%; outline:none;}
+  a, a:visited { text-decoration: underline; }
+  hr { height: 1px; border:0; border-bottom:1px solid black; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page :left { margin: 15mm 20mm 15mm 10mm; }
+  @page :right { margin: 15mm 10mm 15mm 20mm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style><title>README</title></head><body><h1 id="git">Git のさまざまなツール</h1>
+<p>Git の非常に強力な機能の数々をさらに探っていきましょう!!</p>
+<h2 id="6-1">6.1 リビジョンの選択</h2>
+<p>特定のコミットやコミットの範囲を指定する方法</p>
+<h3 id="6-1-1">6.1.1 単一のリビジョン</h3>
+<p>SHA-1 ハッシュを指定すれば、コミットを明確に参照することができる<br />
+でも、もっと簡単に、わかりやすい感じでコミットを参照することもできる！<br />
+単一のコミットを参照するための、方法について紹介していくよ！</p>
+<h3 id="6-1-2-sha">6.1.2 SHA の短縮形</h3>
+<p>Git は、最初の数文字をタイプしただけであなたがどのコミットを指定したいのかを汲み取ってくれます  </p>
+<p>そのための条件  </p>
+<ul>
+<li>SHA-1 の最初の4 文字以上を入力していること</li>
+<li>ひとつのコミットが特定できること</li>
+</ul>
+<pre><code>$ git log
+</code></pre>
+
+<p>でcommitの一覧が出るので、</p>
+<pre><code>$ git show xxxx
+</code></pre>
+
+<p><em>※xxxx はSHA-1の短縮系</em><br />
+をうってみましょう！<br />
+xxxxが条件に当てはまっていれば、コミットの情報を参照できます！  </p>
+<p>条件にあてはまるSHA-1の短縮系を表示させることもできる！</p>
+<pre><code>$ git log --abbrev-commit
+</code></pre>
+
+<p>コマンドをうってみましょう！<br />
+「--abbrev-commit」オプションはコミットを一意に特定できる範囲の省略形で出力する。<br />
+デフォルトでは7文字分表示するが、それだけでSHA-1 を特定できない場合はどんどん長くなる</p>
+<h3 id="6-1-3-sha-1">6.1.3 SHA-1 に関するちょっとしたメモ</h3>
+<p>もしSHA-1ハッシュタグが同一のコミットが存在したら、<br />
+先に実施したコミットが優先されて、後のコミットが無視されてしまう。<br />
+でも、そんな確率は、<br />
+「あなたの所属する開発チームの全メンバーが、同じ夜にそれぞれまったく無関係の事件で全員オオカミに殺されてしまう」可能性よりも低いよ。<br />
+ってはなし。</p>
+<h3 id="6-1-4">6.1.4 ブランチの参照</h3>
+<p>ブランチを指定してコミットを参照することもできる！<br />
+たとえば、topic1 ブランチがあるコミットを示している場合は、</p>
+<pre><code>$ git show topic1
+</code></pre>
+
+<p><em>※topc1はブランチ名</em><br />
+のコマンドを使用して、コミットに関する情報を参照することができる！  </p>
+<p>ブランチがどのSHAを指しているか調べることもできる！<br />
+使用するコマンドはこれ！</p>
+<pre><code>$ git rev-parse topic1
+</code></pre>
+
+<p><em>※topc1はブランチ名</em>  </p>
+<h3 id="6-1-5">6.1.5 参照ログの短縮形</h3>
+<p><strong>参照ログ</strong><br />
+HEAD とブランチの参照が過去数ヶ月間どのように動いてきたかを表すもの  </p>
+<p>参照するためには、↓のコマンドを使用します！</p>
+<pre><code>git reflog
+</code></pre>
+
+<p>何らかの理由でブランチの先端が更新されるたびに、Git の情報をこの一時履歴に格納します。<br />
+何個か前のHEADの状態を知りたいときは、@{n} 形式で参照することができます。</p>
+<pre><code>$ git show HEAD@{3}
+</code></pre>
+
+<p>↑3個前の状態を知りたいとき  </p>
+<p>この構文を使うと、指定した期間だけさかのぼったときに特定のブランチがどこを指していたかを知ることもできます。  </p>
+<p>たとえばmaster ブランチの昨日の状態を知りたいときは、</p>
+<pre><code>$ git show master@{yesterday}
+</code></pre>
+
+<p>コマンドで参照することができます！  </p>
+<p><strong>注意!!</strong>
+この技が使えるのは参照ログにデータが残っている間だけなので、<br />
+直近数ヶ月よりも前のコミットについては使うことができません。  </p>
+<p>参照ログの情報をgit log の出力風の表記で見るにはgit log -g を実行します。</p>
+<pre><code>$ git log -g master
+</code></pre>
+
+<p>参照ログの情報は、完全にローカルなものであることに気をつけましょう。<br />
+同じリポジトリをコピーした別の人の参照ログとは異なる内容になります。<br />
+また、最初にリポジトリをクローンした直後の参照ログは空となります。  </p>
+<p>git showHEAD@{2.months.ago} が動作するのは、<br />
+少なくとも二ヶ月以上前にそのリポジトリをクローンした場合のみで、<br />
+もしつい5 分前にクローンしたばかりなら何も結果を返しません。</p>
+<h3 id="6-1-6">6.1.6 家系の参照</h3>
+<p>いい感じに出力してくれる！萌えコマンド！！  </p>
+<pre><code>git log --pretty=format:'%h %s' --graph
+</code></pre>
+
+<p>参照の最後に̂ をつけると、Git はそれを「指定したコミットの親」と解釈します。<br />
+直前のコミットを見るにはHEAD̂ を指定します。これは『HEAD の親』という意味になります。  </p>
+<pre><code>git show HEAD^
+</code></pre>
+
+<p>̂ の後に数字を指定することもできます。たとえばd921970̂2 は『d921970 の二番目の親』という意味になります。  </p>
+<p>『~』も最初の親を指します。<br />
+つまりHEAD~ とHEAD̂ は同じ意味になります。<br />
+違いが出るのは、数字を指定したときです。<br />
+HEAD~2 『最初の親の最初の親』つまり『祖父母』という意味になります。<br />
+指定した数だけ、順に最初の親をさかのぼっていくことになります。  </p>
+<p>これはHEAD̂̂̂̂̂̂ のようにあらわすこともできます。<br />
+これは「最初の親の最初の親の最初の親」という意味になります。  </p>
+<p>これらふたつの構文を組み合わせることもできます。<br />
+直近の参照(マージコミットだったとします) の二番目の親を取得するにはHEAD~3̂2 などとすればいいのです。  </p>
+<h3 id="6-1-7">6.1.7 コミットの範囲指定</h3>
+<p>コミットの範囲を指定する方法を覚えていきましょう。  </p>
+<p><strong>ダブルドット</strong><br />
+範囲指定の方法としてもっとも一般的なのが、ダブルドット構文です。<br />
+ひとつのコミットからはたどれるけれど<br />
+もうひとつのコミットからはたどれないというコミットの範囲をGitに調べさせるものです。  </p>
+<p>&lt;<A>&gt;になくて&lt;<B>&gt;にあるものを出力するコマンド</p>
+<pre><code>git log &lt;&lt;A&gt;&gt;..&lt;&lt;B&gt;&gt;
+</code></pre>
+
+<p><img alt="1" src="file://C:\Study\git-study\resources\12/./images/1.png" /></p>
+<p>experiment ブランチの内容のうち、まだmaster ブランチにマージされていないものを調べることになりました。<br />
+対象となるコミットのログを見るには、Git にmaster..experiment と指示します。<br />
+これは『experiment からはたどれるけれど、master からはたどれないすべてのコミット』という意味です。<br />
+説明を短く簡潔にするため、<br />
+実際のログの出力のかわりに上の図の中でコミットオブジェクトをあらわす文字を使うことにします。  </p>
+<pre><code>$ git log master..experiment
+D
+C
+</code></pre>
+
+<p>もし逆に、master には存在するけれどもexperiment には存在しないすべてのコミットが知りたいのなら<br />
+↓のようにすればいい  </p>
+<pre><code>$ git log experiment..master
+F
+E
+</code></pre>
+
+<p>「experiment ブランチに今足りないもの」を簡単に表示させることができる!!<br />
+これは、experiment ブランチを最新の状態に保つために何をマージしなければならないのかを知るのに便利  </p>
+<p>これからリモートにプッシュしようとしている内容を知りたいときにも便利!!  </p>
+<pre><code>$ git log origin/master..HEAD
+</code></pre>
+
+<p>このコマンドは、現在のブランチ上でのコミットのうち、<br />
+リモートorigin のmaster ブランチに存在しないものすべてを表示します。  </p>
+<p>主な内容：トピックブランチでの作業をメインブランチに取り込む準備ができたらどのように取り込むかを考える。</p>
+<h3 id="_1">マージのワークフロー</h3>
+<p>シンプルなワークフローのひとつとして、作業を自分の master ブランチに取り込むことを考る。<br />
+master … 安定版のコードを管理するブランチ<br />
+ruby_client … トピックブランチ<br />
+php_client … トピックブランチ  </p>
+<p><img alt="1" src="file://C:\Study\git-study\resources\12/./images/1.png" /></p>
+<p>masterにruby_clientをマージしてから、php_clientをマージすると</p>
+<p><img alt="2" src="file://C:\Study\git-study\resources\12/./images/2.png" /></p>
+<p>これが一番シンプルなマージのワークフローだが、大規模なリポジトリやプロジェクトで作業していると問題が起こるかも。</p>
+<h4 id="_2">二段階マージを考える</h4>
+<p>長期運用用のブランチをmasterとdevelopの２つ用意する。<br />
+master … 安定版のコードを管理するブランチ<br />
+develop … 開発中のコードや、トピックブランチのマージ先となるブランチ</p>
+<p>masterが更新されるのは、安定版がリリースされるときのみで、<br />
+新しいコードはすべてdevelopブランチにマージされる流れ。</p>
+<p><img alt="3" src="file://C:\Study\git-study\resources\12/./images/3.png" /></p>
+<p><img alt="4" src="file://C:\Study\git-study\resources\12/./images/4.png" /></p>
+<p>そして、developブランチが安定していることを確認できたらmasterブランチを先に進める。</p>
+<p><img alt="5" src="file://C:\Study\git-study\resources\12/./images/5.png" /></p>
+<h4 id="_3">大規模マージのワークフロー</h4>
+<p>Git開発プロジェクトには常時稼働するブランチが４つある。
+ - master
+ - next … puのマージ先 puで安全であると判断されたらマージされる
+ - pu (proposed updates) … 開発途中のソースを管理 不安定
+ - maint … メンテナンスリリースに必要なバックポート用のパッチを管理 最新のリリースからフォークしたもの</p>
+<p><img alt="6" src="file://C:\Study\git-study\resources\12/./images/6.png" /></p>
+<p><img alt="7" src="file://C:\Study\git-study\resources\12/./images/7.png" /></p>
+<h4 id="_4">リベースとチェリーピックのワークフロー</h4>
+<p>マージではなくリベースやチェリーピック（つまみぐい）を使ってmasterの先端につなげていく方法</p>
+<p>利点：masterブランチをそのまま前に進めることでプロジェクトの歴史をほぼ直線的に進めることができる。</p>
+<p>リベース … 3.6参照<br />
+チェリーピック … コミット単位でのリベースのようなもの。<br />
+トピックブランチでいくつかコミットしたうちのひとつだけを統合したい場合などに利用する。</p>
+<p><img alt="8" src="file://C:\Study\git-study\resources\12/./images/8.png" /></p>
+<p>コミット e43a6 を masterブランチに取り込むには、次のようにする。</p>
+<pre><code class="sh">$ git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf
+Finished one cherry-pick.
+[master]: created a0a41a9: &quot;More friendly message when locking the index fails.&quot;
+3 files changed, 17 insertions(+), 3 deletions(-)
+</code></pre>
+
+<p>これで、歴史は以下のようになる。</p>
+<p><img alt="9" src="file://C:\Study\git-study\resources\12/./images/9.png" /></p>
+<p>あとはこのトピックブランチを削除すれば、取り込みたくない変更を消すことできる。</p>
+<h2 id="5-3-6">5.3.6 リリース用のタグ付け</h2>
+<p>いよいよリリースする時がきた！<br />
+タグにメンテナの署名を入れたい場合は以下のようにする。</p>
+<pre><code class="sh">$ git tag -s v1.5 -m 'my signed 1.5 tag'
+You need a passphrase to unlock the secret key for user: &quot;Scott Chacon &lt;schacon@gmail.com&gt;&quot; 1024-bit DSA key, ID F721C45A, created 2009-02-09
+</code></pre>
+
+<p>タグに署名した場合、署名に使用したPGP鍵ペアの公開鍵をどのようにして配布するかが問題になる可能性がある。</p>
+<p>解決法<br />
+① 公開鍵をblobとしてリポジトリに含める<br />
+② それを直接指すタグを追加する  </p>
+<p>①でまずどの鍵を使うかを決めるためにpg --list-keysを実行する。  </p>
+<pre><code class="sh">$ gpg --list-keys
+/Users/schacon/.gnupg/pubring.gpg
+---------------------------------
+pub 1024D/F721C45A 2009-02-09 [expires: 2010-02-09]
+uid           Scott Chacon &lt;schacon@gmail.com&gt;
+sub 2048g/45D02282 2009-02-09 [expires: 2010-02-09]
+</code></pre>
+
+<p>鍵をGitデータベースにインポートするには、鍵をエクスポートしてそれをパイプでgit hash-objectに渡す。<br />
+鍵の中身を新しいblobとしてGitに書き込み、そのblobのSHA-1を返す。</p>
+<pre><code class="sh">$ gpg -a --export F721C45A | git hash-object -w --stdin
+659ef797d181633c87ec71ac3f9ba29fe5775b92
+</code></pre>
+
+<p>鍵の中身をGitに取り込めたので、この鍵を直接するタグを作成できるようになった。<br />
+hash-objectコマンドで知ったSHA-1値を指定すればよい。</p>
+<pre><code class="sh">$ git tag -a maintainer-pgp-pub 659ef797d181633c87ec71ac3f9ba29fe5775b92
+</code></pre>
+
+<p>git push --tagsを実行すると、maintainer-pgp-pubタグをみんなと共有できるようになる。<br />
+誰かがタグを検証したい場合は、PGP鍵が入ったblobをデータベースから直接プルで取得し、<br />
+それをPGPにインポートする。</p>
+<pre><code class="sh">$ git show maintainer-pgp-pub | gpg --import
+</code></pre>
+
+<p>この鍵をインポートした人は、署名したすべてのタグを検証できるようになった。<br />
+タグのメッセージに検証手順の説明を含めておけば、git show <tag>でエンドユーザ向けに詳しい検証手順を示すことができる。</p>
+<h2 id="5-3-7">5.3.7 ビルド番号の生成</h2>
+<p>Gitではコミットごとに'v123'のような単調な番号を振っていくことはない。<br />
+もし特定のコミットに対して人間がわかりやすい名前が欲しければ、そのコミットに対してgit describeを実行する。  </p>
+<p>Gitはそのコミットに最も近いタグの名前とそのタグからのコミット数、そしてそのコミットのSHA-1値の一部を使った名前を作成する。</p>
+<pre><code class="sh">$ git describe master
+v1.6.2-rc1-20-g8c5b85c
+</code></pre>
+
+<p>これでスナップショットやビルドを公開するときにわかりやすい名前をつけられるようになる。  </p>
+<h2 id="5-3-8">5.3.8 リリースの準備</h2>
+<p>リリースするにあたって、最新のスナップショットのアーカイブを作る。<br />
+Gitを使っていない可哀想な人たちにもコードを提供するために。。(p152抜粋）  </p>
+<p>その際に使用するコマンドはgit archive。</p>
+<pre><code class="sh">$ git archive master --prefix='project/' | gzip &gt; `git describe master`.tar.gz
+$ ls *.tar.gz
+v1.6.2-rc1-20-g8c5b85c.tar.gz
+</code></pre>
+
+<p>tarballを開けば、プロジェクトのディレクトリの下に最新のスナップショットが得られる。<br />
+まったく同じ方法でzipアーカイブを作成することもできる。<br />
+この場合はgit archiveで --format=zipオプションを指定する。</p>
+<pre><code class="sh">$ git archive master --prefix='project/' --format=zip &gt; `git describe master`.zip
+</code></pre>
+
+<h2 id="5-3-8_1">5.3.8 短いログ</h2>
+<p>そろそろメーリングリストにメールを送り、プロジェクトに何が起こったのかをみんなに知らせよう！<br />
+前回のリリースから何がかわったのかの変更履歴を手軽に取得するにはgit shortlogコマンドを使う。  </p>
+<p>たとえば、直近のリリースの名前がv1.0.1だった場合は、次のようにすると前回のリリース以降のすべてのコミットの概要が得られる。  </p>
+<pre><code class="sh">$ git shortlog --no-merges master --not v1.0.1 
+Chris Wanstrath (8):
+    Add support for annotated tags to Grit::Tag
+    Add packed-refs annotated tag support. Add Grit::Commit#to_patch
+    Update version and History.txt
+    Remove stray `puts`
+    Make ls_tree ignore nils
+
+Tom Preston-Werner (4):
+    fix dates in history
+    dynamic version method
+    Version bump to 1.0.2
+    Regenerated gemspec for version 1.0.2
+</code></pre>
+
+<p>v1.0.1以降のすべてのコミットの概要が、作者別にまとめて得られた！</p>
+<h1 id="5-4">5.4 まとめ</h1>
+<p>おめでとうございます。Gitを使いこなせる開発者の仲間入りです！</p></body></html>
